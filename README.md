@@ -1,4 +1,4 @@
-# Startup
+![logo](Assets/logo.png)
 
 Startup is a Swift library that provides you with declarative components for defining your application startup operations.
 
