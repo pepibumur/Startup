@@ -1,0 +1,23 @@
+language: objective-c
+osx_image: xcode8.3
+script:
+  - set -o pipefail
+  - xcodebuild -version
+  - xcodebuild -showsdks
+env:
+  global:
+  - LC_CTYPE=en_US.UTF-8
+  - LANG=en_US.UTF-8
+  - PROJECT=Startup.xcodeproj
+  - IOS_FRAMEWORK_SCHEME="Startup-iOS"
+  - MACOS_FRAMEWORK_SCHEME="Startup-macOS"
+  - TVOS_FRAMEWORK_SCHEME="Startup-tvOS"
+  - WATCHOS_FRAMEWORK_SCHEME="Startup-watchOS"
+  matrix:
+    - DESTINATION="OS=2.0,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  RUN_TESTS="NO"  BUILD_EXAMPLE="NO"  POD_LINT="NO"
+    - DESTINATION="OS=10.3,name=iPhone 7 Plus"     SCHEME="$IOS_FRAMEWORK_SCHEME"      RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="YES"
+    - DESTINATION="OS=10.2,name=Apple TV 1080p"    SCHEME="$TVOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
+    - DESTINATION="arch=x86_64"                    SCHEME="$MACOS_FRAMEWORK_SCHEME"    RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
+
+xcode_project: Startup.xcodeproj
+  xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
