@@ -3,6 +3,9 @@
 </p>
 
 <p align="center">
+    <a href="https://travis-ci.org/pepibumur/Startup">
+        <img src="https://travis-ci.org/pepibumur/Startup.svg?branch=master">
+    </a>
     <a href="https://cocoapods.org/pods/Startup">
         <img src="https://img.shields.io/cocoapods/v/Startup.svg" alt="CocoaPods" />
     </a>
