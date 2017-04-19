@@ -1,5 +1,20 @@
 ![logo](Assets/logo.png)
 
+<p align="center">
+    <a href="https://cocoapods.org/pods/Startup">
+        <img src="https://img.shields.io/cocoapods/v/Startup.svg" alt="CocoaPods" />
+    </a>
+    <a href="https://github.com/Carthage/Carthage">
+        <img src="https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat" alt="Carthage" />
+    </a>
+    <a href="https://swift.org/package-manager">
+        <img src="https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat" alt="Swift Package Manager" />
+    </a>
+    <a href="https://twitter.com/pepibumur">
+        <img src="https://img.shields.io/badge/contact-@pepibumur-blue.svg?style=flat" alt="Twitter: @pepibumur" />
+    </a>
+</p>
+
 Startup is a Swift library that provides you with declarative components for defining your application startup operations.
 
 ### Motivation
