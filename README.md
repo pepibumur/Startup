@@ -1,4 +1,6 @@
-![logo](Assets/logo.png)
+<p align="center">
+    <img src="Assets/logo.png" width="300" max-width="50%" alt=Startup />
+</p>
 
 <p align="center">
     <a href="https://cocoapods.org/pods/Startup">
