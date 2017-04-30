@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
     Startup is library that provides declarative components for defining apps startup operations.
   DESC
-  s.homepage     = "https://github.com/carambalabs/SugarRecord"
+  s.homepage     = "https://github.com/pepibumur/Startup"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Pedro Piñera Buendía" => "pepibumur@gmail.com" }
   s.social_media_url   = "https://twitter.com/pepibumur"
