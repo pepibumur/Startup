@@ -14,6 +14,16 @@ struct PrintOperation: StartupOperation {
     
 }
 
+struct ErrorOperation: StartupOperation {
+    
+    let description: String
+    
+    func execute() throws {
+        throw NSError(domain: "startup-error", code: -1, userInfo: nil)
+    }
+    
+}
+
 /// Operations can be created by combining operations in serially or in parallel.
 
 let operation = SerialStartupOperation(
@@ -23,7 +33,11 @@ let operation = SerialStartupOperation(
         PrintOperation(description: "Third Operation - Part A"),
         PrintOperation(description: "Third Operation - Part B"),
         PrintOperation(description: "Third Operation - Part C")
-    )
+    ),
+    ErrorOperation(description: "Fourth Operation")
+        .silent(),
+    ErrorOperation(description: "Fifth Operation")
+        .catch(retry: 3)
 )
 
 /// Once your operation is defined, you can call startup passing your operation and it'll execute the operations in the right order. It'll notify when the execution completes, passing an error if any of the operations failed.
