@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "Startup"
-  s.version      = "0.1.6"
+  s.version      = "0.1.7"
   s.summary      = "Swift library that provides a declarative API for defining startup operations"
   s.description  = <<-DESC
     Startup is library that provides declarative components for defining apps startup operations.
   DESC
-  s.homepage     = "git@github.com:pepibumur/Startup.git"
+  s.homepage     = "https://github.com/carambalabs/SugarRecord"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Pedro Piñera Buendía" => "pepibumur@gmail.com" }
   s.social_media_url   = "https://twitter.com/pepibumur"
