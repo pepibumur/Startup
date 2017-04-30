@@ -64,12 +64,39 @@ The protocol requires defining a property description that describe what the ope
 
 ### Combine your operations
 
+Once your operations are defined you can combine them to be executed either concurrently or sequentially.
+
+**Serial Operation**
+
+```swift
+let op = SerialStartupOperation(op1, op2)
+```
+
+**Parallel**
+
+```swift
+let op = ParallelStartupOperation(op1, op2)
+```
+
 ### Execute them
 
+The last step would be executing these combined operations. You just need to call the startup function passing your operation and a completion closure that will be called once everything finishes:
+
+```swift
+startup(op) { error in
+  if let error = error {
+      print("There was an error: \(error)")
+  } else {
+      print("Startup completed")
+  }
+}
+```
 
 ### Extra (Operators)
-- **Catch**:
-- **Silent**:
+Startup  provides operators for handling errors that you can use within your operations:
+
+- **Catch**: It cathes the operation error and retries the operation as many times as you specify.
+- **Silent**: In case the operation fails, it doesn't propagate the error.
 
 ## References
 
