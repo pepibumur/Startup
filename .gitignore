@@ -119,3 +119,5 @@ xcuserdata/
 # End of https://www.gitignore.io/api/ruby,xcode,macos,carthage
 fastlane/test_output
 fastlane/report.xml
+
+*.xcuserdatad
