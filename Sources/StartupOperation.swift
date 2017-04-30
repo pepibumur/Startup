@@ -1,7 +1,7 @@
 import Foundation
 
 /// Protocol that defines an operation to be executed.
-public protocol Operation: CustomStringConvertible {
+public protocol StartupOperation: CustomStringConvertible {
     
     /// Name of the operation that will be executed.
     /// Name will be useful when debugging the execution of the operations.
@@ -16,14 +16,14 @@ public protocol Operation: CustomStringConvertible {
 
 // MARK: - Operation Extension (Queueing)
 
-internal extension Operation {
+internal extension StartupOperation {
     
     /// Executes the operation asynchronously in the given queue
     ///
     /// - Parameters:
     ///   - queue: queue where the operation will be executed.
     ///   - completion: closure that will be called once the operation completes.
-    func execute(in queue: DispatchQueue, completion: @escaping (Error?) -> ()) {
+    func executeInQueue(_ queue: DispatchQueue, completion: @escaping (Error?) -> ()) {
         queue.async {
             do {
                 try self.execute()
@@ -38,14 +38,14 @@ internal extension Operation {
 
 // MARK: - Operation Extension (Error Handling)
 
-public extension Operation {
+public extension StartupOperation {
     
     /// It returns another operation that retries if the wrapped operation fails.
     ///
     /// - Parameter retry: number of times it should be retried.
     /// - Returns: operation that retries the execution in case it fails.
-    func `catch`(retry: UInt) -> Operation {
-        return AnyOperation(description: self.description, closure: {
+    func `catch`(retry: UInt) -> StartupOperation {
+        return AnyStartupOperation(description: self.description, closure: {
             for i in 0..<retry {
                 do {
                     try self.execute()
@@ -61,8 +61,8 @@ public extension Operation {
     /// Returns an operation that silences the error.
     ///
     /// - Returns: operation that silences the error if the wrapped operation throws any.
-    func silent() -> Operation {
-        return AnyOperation(description: self.description, closure: {
+    func silent() -> StartupOperation {
+        return AnyStartupOperation(description: self.description, closure: {
             do {
                 try self.execute()
             } catch {}

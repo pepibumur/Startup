@@ -1,21 +1,21 @@
 import Foundation
 
 /// Operation that executes other operations serially
-public struct SerialOperation: Operation {
+public struct ParallelStartupOperation: StartupOperation {
     
     /// Operation description
     public var description: String {
-        var serialDescription = "Serial Operation:\n"
+        var serialDescription = "Parallel Operation:\n"
         serialDescription.append(self.operations.map { "  - \($0.description)" }.joined(separator: "\n"))
         return serialDescription
     }
-
-    private let operations: [Operation]
+    
+    private let operations: [StartupOperation]
     
     /// Initializes SerialOperation with the operations that will be executed serially.
     ///
     /// - Parameter operations: operation sto be executed serially.
-    public init(operations: [Operation]) {
+    public init(_ operations: StartupOperation...) {
         self.operations = operations
     }
     
@@ -23,9 +23,10 @@ public struct SerialOperation: Operation {
     ///
     /// - Throws: an error if any of the operations fails. If that happens, the remaining operations won't be executed.
     public func execute() throws {
-        try operations.forEach { (operation) in
-            try operation.execute()
-        }
+        try self.execute(executor: concurrentThreadExecutor)
     }
     
+    internal func execute(executor: SyncExecutor) throws  {
+        try executor(operations.map {$0.executeInQueue})
+    }
 }

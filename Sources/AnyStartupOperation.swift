@@ -1,7 +1,7 @@
 import Foundation
 
 /// Operation that is initialized with the action that has to be executd.
-struct AnyOperation: Operation {
+struct AnyStartupOperation: StartupOperation {
     
     /// Operation description
     var description: String
