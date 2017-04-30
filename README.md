@@ -80,7 +80,7 @@ let op = ParallelStartupOperation(op1, op2)
 
 ### Execute them
 
-The last step would be executing these combined operations. You just need to call the startup function passing your operation and a completion closure that will be called once everything finishes:
+The last step would execute these combined operations. You just need to call the startup function passing your operation and a completion closure that will be called once everything finishes:
 
 ```swift
 startup(op) { error in
