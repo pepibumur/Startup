@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Startup"
-  s.version      = "0.1.3"
+  s.version      = "0.1.4"
   s.summary      = "Swift library that provides a declarative API for defining startup operations"
   s.description  = <<-DESC
     Startup is library that provides declarative components for defining apps startup operations.
