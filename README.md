@@ -27,7 +27,7 @@ When our apps start, they need to perform some operations before the user can st
 
 **Startup provides you with a very nice API for defining the operations, dependencies and their execution in different threads**
 
-## How to use the library
+## How to setup the library
 The library is distributed using CocoaPods, so you just need to update your project `Podfile` and add:
 
 ```ruby
@@ -43,6 +43,33 @@ github "pepibumur/Startup"
 ```
 
 And execute `carthage build`
+
+## How to use Startup
+### Define your operations
+Startup operations should conform the `StartupOperation` protocol:
+
+```swift
+struct PrintOperation: StartupOperation {
+
+    let description: String
+    
+    func execute() throws {
+        print(description)
+    }
+    
+}
+```
+
+The protocol requires defining a property description that describe what the operation is about, and execute, a method that synchronously executes the operation action.
+
+### Combine your operations
+
+### Execute them
+
+
+### Extra (Operators)
+- **Catch**:
+- **Silent**:
 
 ## References
 

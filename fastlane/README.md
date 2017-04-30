@@ -29,16 +29,6 @@ xcode-select --install
 </table>
 
 # Available Actions
-### tests
-```
-fastlane tests
-```
-
-### travis
-```
-fastlane travis
-```
-
 ### push
 ```
 fastlane push
