@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Startup"
-  s.version      = "0.1"
+  s.version      = "0.1.1"
   s.summary      = ""
   s.description  = <<-DESC
     Startup is library that provides declarative components for defining apps startup operations.
